@@ -61,7 +61,7 @@ def get_context(needle, haystack, context):
             # Return the number of context sentences asked for
             return haystack[prefix:i+(context+1)]
 
-def summarize(text):
+def summarize(num_sentences, context_lines,text):
     result = {}
     # Remove newlines from the text
     #text = re.sub('\s*[\n|\r|\r\n]\s*', ' ', text)
@@ -72,7 +72,7 @@ def summarize(text):
     # Use a frequency distribution to encode how often a word occurs
     frequencies = FreqDist(words)
     # Now create a set of the most frequent words, limit top 100 words
-    frequent_words = [pair[0] for pair in frequencies.items()[:100]]
+    frequent_words = [pair[0] for pair in frequencies.most_common(100)]
     # Separate all the sentences
     original_sentences = sentence_tokenizer.tokenize(text)
     # Find the sentences with the most frequent words
@@ -86,4 +86,4 @@ def summarize(text):
     return result
     
     
-    data['word_token_sum'] = data['cleaned_ Incident Description'].apply(lambda x: summarize(x))
+    data['word_token_sum'] = data['cleaned_ Incident Description'].apply(lambda x: summarize(1,1,x))
