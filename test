@@ -15,7 +15,7 @@ from collections import defaultdict
 from string import punctuation
 
 
-filepath=r"C:\Users\X172826\Desktop\Input\in\in\PGS_IN_dos.csv"
+filepath=r"C:\Users\amdin\Desktop\Input\in\in\PGS_IN_dos.csv"
 data=pd.read_csv(filepath,sep=";",encoding="iso-8859-1")
 
 data
